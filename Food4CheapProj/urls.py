@@ -19,7 +19,13 @@ urlpatterns = [
     path('Seafoods/<str:product>', views.seafoods_product_view),
     path('Vegetables/<str:product>', views.vegetables_product_view),
 
-    path('delete_all_items_', views.delete_all_items, name='delete_all_items')
+    path('Signup', views.signup_view),
+    path('Login', views.login_view),
+    path('Account', views.account_view),
+    path('About', views.about_view),
+
+    path('delete_all_items_', views.delete_all_items, name='delete_all_items'),
+    path('sign_out', views.sign_out, name='sign_out')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="introduction">
+      <h1>Food4Cheap</h1>
+      <h3>Welcome to our online market.</h3>
+    </div>
+
+    <div id="account">
+      <h2>Hello {{ user.username }}</h2>
+      <form action="{% url 'sign_out' %}" method = "POST">
+          {% csrf_token %}
+          <button id="account-btn" onclick="signOut()">Sign out</button>
+      </form>
+        <br/>
+    </div>
+{% endblock content %}

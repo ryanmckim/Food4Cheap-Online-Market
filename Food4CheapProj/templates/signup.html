@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="introduction">
+      <h1>Food4Cheap</h1>
+      <h3>Welcome to our online market.</h3>
+    </div>
+
+    <div id="signup">
+      <form id="signup-info" method="POST">
+        <h1>Signup</h1>
+        <br />
+          {% csrf_token %}
+          {% for form_field in form %}
+            {{ form_field.label }}
+            {{ form_field }}
+            <br />
+            <br />
+          {% endfor %}
+          <input type="submit" id="signup-btn" value="Create Account" />
+          {% if messages %}
+            <br />
+            <br />
+            <ul class="messages">
+            {% for message in messages %}
+              <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message|safe }}
+              </li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+          <br />
+          <br />
+      </form>
+    </div>
+{% endblock content %}

@@ -14,3 +14,9 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [
         CartItemInline
     ]
+
+
+class UserAdmin(admin.ModelAdmin):
+    inlines = [
+        CartItemInline
+    ]

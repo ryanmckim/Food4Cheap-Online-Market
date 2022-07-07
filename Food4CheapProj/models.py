@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -16,6 +17,9 @@ class Category(models.Model):
     slogan = models.CharField(max_length=255)
     category = models.CharField(max_length=255, choices=ProductType.choices)
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
@@ -30,7 +34,11 @@ class Product(models.Model):
     carbohydrates = models.CharField(max_length=255)
     proteins = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class CartItem(models.Model):
     times_bought = models.FloatField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    purchaser = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

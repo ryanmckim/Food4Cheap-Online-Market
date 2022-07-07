@@ -1,35 +1,6 @@
-<!DOCTYPE html>
-{% load static %}
-<link rel="stylesheet" href="../static/styles.css?{% now 'U' %}" />
+{% extends 'base.html' %}
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Food4Cheap</title>
-
-  </head>
-  <body>
-    <a name="top"></a>
-
-    <!--Navigation section-->
-    <nav class="navbar">
-      <div class="navbar__container">
-        <ul class="navbar__menu">
-          <li class="navbar__item">
-            <a href="index.html" class="navbar__links">Home</a>
-          </li>
-          <li class="navbar__item">
-            <a href="login.html" class="navbar__links">Login</a>
-          </li>
-          <li class="navbar__item">
-            <a href="about.html" class="navbar__links">About Us</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
+{% block content %}
     <div class="introduction">
       <h1>{{ category.name }}</h1>
       <h3>{{ category.slogan }}</h3>
@@ -51,76 +22,4 @@
         {% endfor %}
       </div>
     </div>
-
-    <hr />
-    <br />
-
-    <!--Shopping cart section-->
-    <button data-cart-target="#cart__details" class="cart">
-      <img src="{% static 'Food4CheapProj/Cart.png' %}" alt="Cart" />
-    </button>
-    <div class="cart__details" id="cart__details">
-      <div class="cart__details__header">
-        <div class="cart__details__title">Your Shopping Cart</div>
-        <button data-close-button class="close__button">&times;</button>
-      </div>
-      <div class="cart__details__body">
-        <ul class="shopping-list">
-          {% for item in cart_items %}
-          <li>${% widthratio item.product.price 1 item.times_bought %}.00 &nbsp {{ item.times_bought }} {{ item.product.name }} </li>
-          {% endfor %}
-        </ul>
-        <hr />
-        <h3>Total: ${{ total_price|floatformat:2 }}</h3>
-        <form action="{% url 'delete_all_items' %}" method = "POST">
-          {% csrf_token %}
-          <button class="checkout__button" onclick="purchase()">Purchase</button>
-        </form>
-      </div>
-    </div>
-    <div id="overlay"></div>
-
-    <!--Footer section-->
-    <div class="footer">
-      <div class="footer__description">
-        <h3>About Us</h3>
-        <ul class="footer__list">
-          <li><a class="text-muted">Careers</a></li>
-          <li><a class="text-muted">Locations</a></li>
-          <li><a class="text-muted">Terms & Privacy</a></li>
-        </ul>
-      </div>
-      <div class="footer__description">
-        <h3>Team</h3>
-        <ul class="footer__list">
-          <li><a class="text-muted">Ryan Kim</a></li>
-          <li><a class="text-muted">Malcolm Zhao</a></li>
-        </ul>
-      </div>
-      <div class="footer__description">
-        <h3>Payments</h3>
-        <ul class="footer__list">
-          <li><a class="text-muted">Gift Cards</a></li>
-          <li><a class="text-muted">Points</a></li>
-          <li><a class="text-muted">Coupons</a></li>
-        </ul>
-      </div>
-      <div class="footer__description">
-        <h3>Information</h3>
-        <ul class="footer__list">
-          <li><a class="text-muted">Shipping</a></li>
-          <li><a class="text-muted">Returns</a></li>
-          <li><a class="text-muted">Customer Service</a></li>
-        </ul>
-        <br />
-        <a href="#top" style="text-decoration: none">Back to top of page</a>
-      </div>
-    </div>
-    <script src="{% static '../static/index.js' %}"></script>
-    <script>
-      function purchase() {
-        alert("Purchase Successful!")
-      }
-    </script>
-  </body>
-</html>
+{% endblock content %}
