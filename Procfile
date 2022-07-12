@@ -1,1 +1,1 @@
-web: gunicorn Food4Cheap.wsgi
+web: gunicorn Food4Cheap.wsgi --log-file -
