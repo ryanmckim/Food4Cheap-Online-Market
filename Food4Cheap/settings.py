@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Food4CheapProj.apps.Food4CheapProjConfig'
+    'Food4CheapProj.apps.Food4CheapProjConfig',
     
     'Food4Cheap'
 ]
