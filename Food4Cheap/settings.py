@@ -82,15 +82,25 @@ WSGI_APPLICATION = 'Food4Cheap.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'db8nb5udlm1k8e',
+        'USER': 'vnzlocprudwxnu',
+        'PASSWORD': '1efc10e3aac46a226b633bf72f163055de2030ecce5319527c15bf37293927eb',
+        'HOST': 'ec2-54-165-90-230.compute-1.amazonaws.com',
+        'PORT': '5432'
     }
 }
-
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
 
 
 # Password validation
