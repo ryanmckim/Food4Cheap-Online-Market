@@ -16,5 +16,7 @@ In our project, we:
  Created by Ryan Kim and Malcolm Zhao.
 
 ![home-page](Thumbnails/Home-page.png)
+
 ![home-page](Thumbnails/Product.png)
+
 ![home-page](Thumbnails/Shopping-cart.png)
